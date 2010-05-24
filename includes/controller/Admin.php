@@ -30,10 +30,10 @@
          */
         private function __construct() {
 			
-			$config = Config::current();
+            $config = Config::current();
 
             $this->admin_theme = fallback($config->admin_theme, "default");
-			$_SESSION['admin_theme'] = $this->admin_theme;
+            $_SESSION['admin_theme'] = $this->admin_theme;
 
             $this->theme = new Twig_Loader(MAIN_DIR."/admin/themes/".$this->admin_theme,
                                            (is_writable(INCLUDES_DIR."/caches") and !DEBUG) ?
@@ -2013,7 +2013,7 @@
             foreach (glob(INCLUDES_DIR."/caches/*.cache") as $cache)
                 @unlink($cache);
 
-			$config->set("admin_theme",$_GET['theme']);
+            $config->set("admin_theme",$_GET['theme']);
             Flash::notice(_f("Admin theme changed to &#8220;%s&#8221;.", array($info["name"])), "/admin/?action=themes");
         }
 
